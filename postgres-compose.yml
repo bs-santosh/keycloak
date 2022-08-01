@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: db_sbm
+    image: "postgres:14.4"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    volumes:
+      - //c/Santosh/CODE/sbm/postgres/data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d/:ro
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: keycloak
+      POSTGRES_HOST: postgres
+    networks:
+      - iam-local
+    ports:
+      - "5432:5432"
+  pgadmin:
+    container_name: pgadmin_sbm
+    image: "dpage/pgadmin4:5.1"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@domain.local
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - "5050:80"
+    networks:
+      - iam-local
+networks:
+  iam-local:
+    name: iam-local
+    driver: bridge
