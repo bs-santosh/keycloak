@@ -5,7 +5,9 @@ Create a data folder in your preferred location and change the volume mounting a
 Place initial db creation script at sql/0-init-db.sql
 
 Run docker container
+```
 docker-compose -f all-in-one.yml up
+```
 
 Access postgres
  - Postgres runs on port 5432
