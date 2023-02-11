@@ -26,3 +26,8 @@ Access Keycloak
  
  Keyclok user: admin
  Keycloak passowrd: password
+ 
+ Customizing the Theme
+ - Create themes folder
+ - Add a mount/copy files to copy to docker container
+ Refer https://dev.to/austincunningham/change-login-theme-in-keycloak-docker-image-f4o
