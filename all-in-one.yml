@@ -33,6 +33,8 @@ services:
   keycloak: 
     container_name: iam_sbm 
     image: "jboss/keycloak:15.0.2" 
+    volumes:
+      - //c/Santosh/CODE/sbm/keycloak/themes/sbm:/opt/jboss/keycloak/themes/sbm
     depends_on: 
       - "postgres" 
     environment:
